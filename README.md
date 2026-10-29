@@ -1,38 +1,52 @@
 # Eu Sou o Presidente
 
-Gerador de documentos oficiais personalizados: escolha o brasão, edite o texto e exporte em PDF com aparência de documento oficial. Feito com Next.js, MongoDB, Cloudinary, Tailwind CSS e shadcn/ui.
+Aplicacao web desenvolvida com Next.js para geracao de documentos oficiais e pronunciamentos presidenciais fakes, com suporte a multiplos templates, upload de brasoes via Cloudinary, persistencia local (LocalStorage), template inicial carregado do MongoDB e exportacao fiel para PDF (formato A4).
 
-## Getting Started
+## Tecnologias Utilizadas
 
-First, run the development server:
+- **Framework:** Next.js (App Router, TypeScript)
+- **Estilizacao:** Tailwind CSS & shadcn/ui
+- **Banco de Dados:** MongoDB / Mongoose (para o template inicial oficial)
+- **Gerenciamento de Imagens:** Cloudinary API
+- **Exportacao de PDF:** html2canvas & jsPDF
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Requisitos de Sistema
+
+- Node.js 18+ instalado
+- Conta e credenciais do Cloudinary
+- Instancia do MongoDB (local ou Atlas)
+
+## Variaveis de Ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto baseado no `.env.example`:
+
+```env
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+MONGODB_URI=mongodb://localhost:27017/eusouopresidente
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Como Executar o Projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Instale as dependencias:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Inicie o servidor de desenvolvimento:
+```bash
+npm run dev
+```
 
-## Learn More
+3. Acesse a aplicacao no navegador:
+```text
+http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Funcionalidades Principais
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Templates Dinamicos:** Alterne entre Republica do Brasil, Imperio do Brasil e Presidencia Corporativa.
+- **Autosave Local:** Suas alteracoes sao salvas automaticamente no navegador do usuario via LocalStorage.
+- **Assinatura Manuscrita:** Renderizacao automatica da assinatura com fonte caligrafica no documento oficial.
+- **Exportacao para PDF:** Geracao de documento A4 pronto para download mantendo rigoroso padrao visual.
