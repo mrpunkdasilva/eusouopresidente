@@ -49,7 +49,12 @@ Que Deus abençoe o Brasil.`,
 
 export async function GET() {
   try {
-    await dbConnect();
+    const connection = await dbConnect();
+
+    if (!connection) {
+      return NextResponse.json({ success: true, data: DEFAULT_TEMPLATE }, { status: 200 });
+    }
+
     let template = await Document.findOne({ templateId: 'brasil' });
     
     if (!template) {
@@ -59,7 +64,6 @@ export async function GET() {
     return NextResponse.json({ success: true, data: template }, { status: 200 });
   } catch (error) {
     console.error('Erro ao buscar template do MongoDB:', error);
-    const message = error instanceof Error ? error.message : 'Erro desconhecido';
-    return NextResponse.json({ success: false, error: message }, { status: 500 });
+    return NextResponse.json({ success: true, data: DEFAULT_TEMPLATE }, { status: 200 });
   }
 }

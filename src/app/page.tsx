@@ -389,7 +389,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="min-h-screen bg-black text-emerald-400 flex items-center justify-center font-mono text-base tracking-widest">
-        CARREGANDO TEMPLATE DO MONGODB...
+        CARREGANDO...
       </div>
     );
   }
